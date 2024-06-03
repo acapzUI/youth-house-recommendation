@@ -3,6 +3,11 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_naver_map/flutter_naver_map.dart';
+import 'package:youth_house_recommendation/screenDetail.dart';
+import 'package:youth_house_recommendation/screenFilter.dart';
+import 'package:youth_house_recommendation/screenMap.dart';
+import 'package:youth_house_recommendation/screenTitle.dart';
+
 
 void main() async {
   await _initialize();
@@ -17,33 +22,21 @@ Future<void> _initialize() async {
   );
 }
 
-
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-
-    final Completer<NaverMapController> mapControllerCompleter = Completer();
-
     return MaterialApp(
-        home: Scaffold (
-          appBar: AppBar(
-            title: Text('this is app')
-          ),
-          body: NaverMap(
-            options: const NaverMapViewOptions(
-              indoorEnable: true,
-              locationButtonEnable: false,
-              consumeSymbolTapEvents: false
-            ),
-            onMapReady: (controller) async {
-              mapControllerCompleter.complete(controller);
-              log("onMapReady", name: "onMapReady");
-            },
-          ),
-        )
+      initialRoute: "/t",
+      routes: {
+        "/t": (context) => screenTitle(),
+        "/f": (context) => screenFilter(),
+        "/m": (context) => screenMap(),
+        "/d": (context) => screenDetail(),
+      },
     );
   }
 }
+
+
