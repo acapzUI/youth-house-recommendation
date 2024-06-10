@@ -15,6 +15,36 @@ class screenMap extends StatelessWidget {
   Widget build(BuildContext context) {
     final arguments = (ModalRoute.of(context)?.settings.arguments ?? <String, dynamic>{}) as Map;
     NLatLng loc;
+    List<NLatLng> locations = [
+      NLatLng(37.557160-0.00125, 127.045441-0.00125),
+      NLatLng(37.557160+0.00125, 127.045441-0.00125),
+      NLatLng(37.557160+0.00125, 127.045441+0.00125),
+    ];
+    List<NCircleOverlay> locationCircles = [
+      NCircleOverlay(id: "1", color: Colors.red, radius: 15, center: NLatLng(37.557160-0.00125, 127.045441-0.00125)),
+      NCircleOverlay(id: "2", color: Colors.blue, radius: 15, center: NLatLng(37.557160+0.00125, 127.045441-0.00125)),
+      NCircleOverlay(id: "3", color: Colors.red, radius: 15, center: NLatLng(37.557160-0.00125, 127.045441+0.00125)),
+      NCircleOverlay(id: "4", color: Colors.red, radius: 15, center: NLatLng(37.557160+0.00125, 127.045441+0.00125)),
+      NCircleOverlay(id: "5", color: Colors.blue, radius: 15, center: NLatLng(37.557160+0.0025, 127.045441-0.00125)),
+      NCircleOverlay(id: "6", color: Colors.blue, radius: 15, center: NLatLng(37.557160+0.0025, 127.045441-0.0025)),
+      NCircleOverlay(id: "7", color: Colors.blue, radius: 15, center: NLatLng(37.557160+0.00125, 127.045441-0.0025)),
+      NCircleOverlay(id: "8", color: Colors.blue, radius: 15, center: NLatLng(37.557160-0.0025, 127.045441-0.00125)),
+      NCircleOverlay(id: "9", color: Colors.blue, radius: 15, center: NLatLng(37.557160+0.00125, 127.045441+0.0025)),
+      NCircleOverlay(id: "10", color: Colors.blue, radius: 15, center: NLatLng(37.557160+0.0025, 127.045441+0.0025)),
+    ];
+    List<NMarker> locationMarkers = [
+      NMarker(id: "1-1", position: NLatLng(37.557160-0.00125, 127.045441-0.00125)),
+      NMarker(id: "2-1", position: NLatLng(37.557160+0.00125, 127.045441-0.00125)),
+      NMarker(id: "3-1", position: NLatLng(37.557160-0.00125, 127.045441+0.00125)),
+      NMarker(id: "4-1", position: NLatLng(37.557160+0.00125, 127.045441+0.00125)),
+      NMarker(id: "5-1", position: NLatLng(37.557160+0.0025, 127.045441-0.00125)),
+      NMarker(id: "6-1", position: NLatLng(37.557160+0.0025, 127.045441-0.0025)),
+      NMarker(id: "7-1", position: NLatLng(37.557160+0.00125, 127.045441-0.0025)),
+      NMarker(id: "8-1", position: NLatLng(37.557160-0.0025, 127.045441-0.00125)),
+      NMarker(id: "9-1", position: NLatLng(37.557160+0.00125, 127.045441+0.0025)),
+      NMarker(id: "10-1", position: NLatLng(37.557160+0.0025, 127.045441+0.0025)),
+    ];
+
     if (arguments['filters'].location == "쿠팡") {
       loc = NLatLng(37.515750, 127.099055);
     } else if (arguments['filters'].location == "한양대학교") {
@@ -57,6 +87,7 @@ class screenMap extends StatelessWidget {
                         center: loc,
                         radius: 500,
                     );
+
                     final marker2 = NMarker(
                         id: "pos",
                         position: loc
@@ -64,6 +95,12 @@ class screenMap extends StatelessWidget {
 
                     controller.addOverlay(marker1);
                     controller.addOverlay(marker2);
+                    locationCircles.forEach((lc) {
+                      controller.addOverlay(lc);
+                    });
+                    locationMarkers.forEach((lc) {
+                      controller.addOverlay(lc);
+                    });
 
                     final onMarkerInfoWindow = NInfoWindow.onMarker(
                         id: "pos",
@@ -117,8 +154,8 @@ class _Products extends State<Products> {
   @override
   Widget build(BuildContext context) {
     List<Map<String, String>> searchResults = [
-      {"name": "오피스텔 A", "point": "6.23점", "location": "경기도 수원시 영통구 하동"},
-      {"name": "아파트 B", "point": "6.23점", "location": "경기도 수원시 영통구 하동"},
+      {"name": "오피스텔 A", "point": "6.23점", "location": "주소1"},
+      {"name": "아파트 B", "point": "6.23점", "location": "주소2"},
       {"name": "빌라 C", "point": "6.23점", "location": "경기도 수원시 영통구 하동"},
       {"name": "원룸 D", "point": "6.23점", "location": "경기도 수원시 영통구 하동"},
       {"name": "아파트 E", "point": "6.23점", "location": "경기도 수원시 영통구 하동"},
@@ -127,6 +164,11 @@ class _Products extends State<Products> {
       {"name": "원룸 D", "point": "6.23점", "location": "경기도 수원시 영통구 하동"},
       {"name": "아파트 E", "point": "6.23점", "location": "경기도 수원시 영통구 하동"},
     ];
+    Map<String, NLatLng> locations = {
+      "오피스텔 A": NLatLng(37.557160-0.00125, 127.045441-0.00125),
+      "오피스텔 A": NLatLng(37.557160+0.00125, 127.045441-0.00125),
+      "오피스텔 A": NLatLng(37.557160+0.00125, 127.045441+0.00125),
+    };
 
     final searchResultsLength = searchResults.length;
     return Scaffold(

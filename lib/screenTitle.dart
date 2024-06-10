@@ -22,9 +22,9 @@ class screenTitle extends StatelessWidget {
           body: Center(
             child: Column(
               children: [
-                Container(height: 100,),
+                Container(height: 180,),
                 Center(
-                    child: Image(image: AssetImage('assets/logo.png')),
+                    child: Image(width:300, image: AssetImage('assets/logo.png')),
                 ),
                 Container(height: 20,),
                 Center(
