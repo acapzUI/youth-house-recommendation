@@ -3,55 +3,51 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_naver_map/flutter_naver_map.dart';
 import 'package:flutter/services.dart';
-import 'package:youth_house_recommendation/screenDetail.dart';
 
 import 'Filters.dart';
+import 'Locations.dart';
 
 class screenMap extends StatelessWidget {
-  const screenMap({Key? key}) : super(key: key);
+  screenMap({Key? key}) : super(key: key);
+
+  List<NLatLng> locations = [
+    NLatLng(37.5568961252672, 127.041607745077),
+    NLatLng(37.5567129920758 ,127.042508405187),
+    NLatLng(37.5565009541884, 127.041589643716),
+    NLatLng(37.5566041846132, 127.041657379798),
+    NLatLng(37.5566041846132, 127.041657379798),
+    NLatLng(37.5564984012924, 127.041929506644),
+    NLatLng(37.5562860573636, 127.041869857816),
+    NLatLng(37.5564502427838, 127.041032455657),
+    NLatLng(37.5562459729189, 127.041586785817),
+    NLatLng(37.5565375066403, 127.041155411556),
+  ];
+
+  List<NCircleOverlay> locationCircles = [];
+  List<NMarker> locationMarkers = [];
 
 
   @override
   Widget build(BuildContext context) {
     final arguments = (ModalRoute.of(context)?.settings.arguments ?? <String, dynamic>{}) as Map;
-    NLatLng loc;
-    List<NLatLng> locations = [
-      NLatLng(37.557160-0.00125, 127.045441-0.00125),
-      NLatLng(37.557160+0.00125, 127.045441-0.00125),
-      NLatLng(37.557160+0.00125, 127.045441+0.00125),
-    ];
-    List<NCircleOverlay> locationCircles = [
-      NCircleOverlay(id: "1", color: Colors.red, radius: 15, center: NLatLng(37.557160-0.00125, 127.045441-0.00125)),
-      NCircleOverlay(id: "2", color: Colors.blue, radius: 15, center: NLatLng(37.557160+0.00125, 127.045441-0.00125)),
-      NCircleOverlay(id: "3", color: Colors.red, radius: 15, center: NLatLng(37.557160-0.00125, 127.045441+0.00125)),
-      NCircleOverlay(id: "4", color: Colors.red, radius: 15, center: NLatLng(37.557160+0.00125, 127.045441+0.00125)),
-      NCircleOverlay(id: "5", color: Colors.blue, radius: 15, center: NLatLng(37.557160+0.0025, 127.045441-0.00125)),
-      NCircleOverlay(id: "6", color: Colors.blue, radius: 15, center: NLatLng(37.557160+0.0025, 127.045441-0.0025)),
-      NCircleOverlay(id: "7", color: Colors.blue, radius: 15, center: NLatLng(37.557160+0.00125, 127.045441-0.0025)),
-      NCircleOverlay(id: "8", color: Colors.blue, radius: 15, center: NLatLng(37.557160-0.0025, 127.045441-0.00125)),
-      NCircleOverlay(id: "9", color: Colors.blue, radius: 15, center: NLatLng(37.557160+0.00125, 127.045441+0.0025)),
-      NCircleOverlay(id: "10", color: Colors.blue, radius: 15, center: NLatLng(37.557160+0.0025, 127.045441+0.0025)),
-    ];
-    List<NMarker> locationMarkers = [
-      NMarker(id: "1-1", position: NLatLng(37.557160-0.00125, 127.045441-0.00125)),
-      NMarker(id: "2-1", position: NLatLng(37.557160+0.00125, 127.045441-0.00125)),
-      NMarker(id: "3-1", position: NLatLng(37.557160-0.00125, 127.045441+0.00125)),
-      NMarker(id: "4-1", position: NLatLng(37.557160+0.00125, 127.045441+0.00125)),
-      NMarker(id: "5-1", position: NLatLng(37.557160+0.0025, 127.045441-0.00125)),
-      NMarker(id: "6-1", position: NLatLng(37.557160+0.0025, 127.045441-0.0025)),
-      NMarker(id: "7-1", position: NLatLng(37.557160+0.00125, 127.045441-0.0025)),
-      NMarker(id: "8-1", position: NLatLng(37.557160-0.0025, 127.045441-0.00125)),
-      NMarker(id: "9-1", position: NLatLng(37.557160+0.00125, 127.045441+0.0025)),
-      NMarker(id: "10-1", position: NLatLng(37.557160+0.0025, 127.045441+0.0025)),
-    ];
 
-    if (arguments['filters'].location == "쿠팡") {
-      loc = NLatLng(37.515750, 127.099055);
-    } else if (arguments['filters'].location == "한양대학교") {
-      loc = NLatLng(37.557160, 127.045441);
-    } else {
-      loc = NLatLng(37.557160, 127.045441);
+    NLatLng loc = NLatLng(37.557160, 127.045441);
+
+    for(int i=0;i<10;i++) {
+      locationCircles.add(NCircleOverlay(id: i.toString() + "c", color: Colors.red, radius: 15, center: locations[i]));
     }
+    for(int i=0;i<10;i++) {
+      locationMarkers.add(NMarker(id: i.toString() + "m", position: locations[i]));
+    }
+
+    // if (arguments['filters'].location == "쿠팡") {
+    //   loc = NLatLng(37.515750, 127.099055);
+    // } else if (arguments['filters'].location == "한양대학교") {
+    //   loc = NLatLng(37.557160, 127.045441);
+    // } else {
+    //   loc = NLatLng(37.557160, 127.045441);
+    // }
+
     //SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
     //final Completer<NaverMapController> mapControllerCompleter = Completer();
     BuildContext ctx = context;
@@ -80,6 +76,8 @@ class screenMap extends StatelessWidget {
                       ),
                   ),
                   onMapReady: (controller) async {
+
+
                     //mapControllerCompleter.complete(controller);
                     final marker1 = NCircleOverlay(
                         id: "var",
@@ -98,8 +96,8 @@ class screenMap extends StatelessWidget {
                     locationCircles.forEach((lc) {
                       controller.addOverlay(lc);
                     });
-                    locationMarkers.forEach((lc) {
-                      controller.addOverlay(lc);
+                    locationMarkers.forEach((lm) {
+                      controller.addOverlay(lm);
                     });
 
                     final onMarkerInfoWindow = NInfoWindow.onMarker(
@@ -107,6 +105,7 @@ class screenMap extends StatelessWidget {
                         text: arguments['filters'].location
                     );
                     marker2.openInfoWindow(onMarkerInfoWindow);
+
                     log("onMapReady", name: "onMapReady");
                   },
                 ),
@@ -125,7 +124,7 @@ class screenMap extends StatelessWidget {
                                     topLeft: Radius.circular(20),
                                     topRight: Radius.circular(20)),
                                 color: Colors.grey),
-                            child: Products(ctx)
+                            child: Products(ctx, locations)
                         ),
                       );
                     }
@@ -139,38 +138,316 @@ class screenMap extends StatelessWidget {
 
 class Products extends StatefulWidget {
   final BuildContext ctx;
-  const Products(this.ctx, {super.key});
+  final List<NLatLng> locs;
+  const Products(this.ctx, this.locs, {super.key});
 
   @override
   State<StatefulWidget> createState() {
-    return _Products(ctx);
+    return _Products(ctx, locs);
   }
 }
 
 class _Products extends State<Products> {
   final BuildContext ctx;
-  _Products(this.ctx);
+  final List<NLatLng> searchResultLocations;
+  _Products(this.ctx, this.searchResultLocations);
+
+  List<String> searchResultAddress = [
+    "서울시 성동구 행당동 37-34",
+    "서울시 성동구 행당동 32-31",
+    "서울시 성동구 행당동 37-92",
+    "서울시 성동구 행당동 37-78",
+    "서울시 성동구 행당동 37-78",
+    "서울시 성동구 행당동 37-73",
+    "서울시 성동구 행당동 70-18",
+    "서울시 성동구 행당동 39-1",
+    "서울시 성동구 행당동 70-23",
+    "서울시 성동구 행당동 37-99"
+  ];
+  List<AssetImage> searchResultImages = [];
+  List<int> searchResultImageCounts = [
+    7, 5, 3, 5, 6, 5, 4, 5, 5, 5
+  ];
+  List<double> searchResultPoints = [
+    15.6, 15.5, 15.2, 15.2, 15.2, 15.2, 15.2, 15.2, 15.2, 15.2
+  ];
+  List<String> searchResultPrices = [
+    "5000/45",
+    "4000/40",
+    "2000/50",
+    "1000/55",
+    "500/55",
+    "1000/55",
+    "5000/55",
+    "5000/60",
+    "6000/50",
+    "500/56"
+  ];
+  List<double> searchResultcPrices = [
+    14381.818,
+    12727.273,
+    14000,
+    13000,
+    12500,
+    13000,
+    17000,
+    18090.909,
+    16909.091,
+    12718.182,
+  ];
+  List<Map<String, bool>> outdoorFacilities = [
+    {
+      "subway": false,
+      "bus": false,
+      "conv-store": false,
+      "mart": false,
+      "hospital": false,
+      "pharmacy": false,
+      "park": false,
+      "public": false,
+      "culture": false,
+      "restaurant": false,
+      "cafe": false
+    },
+    {
+      "subway": false,
+      "bus": false,
+      "conv-store": false,
+      "mart": false,
+      "hospital": false,
+      "pharmacy": false,
+      "park": false,
+      "public": false,
+      "culture": false,
+      "restaurant": false,
+      "cafe": false
+    },
+    {
+      "subway": false,
+      "bus": false,
+      "conv-store": false,
+      "mart": false,
+      "hospital": false,
+      "pharmacy": false,
+      "park": false,
+      "public": false,
+      "culture": false,
+      "restaurant": false,
+      "cafe": false
+    },
+    {
+      "subway": false,
+      "bus": false,
+      "conv-store": false,
+      "mart": false,
+      "hospital": false,
+      "pharmacy": false,
+      "park": false,
+      "public": false,
+      "culture": false,
+      "restaurant": false,
+      "cafe": false
+    },
+    {
+      "subway": false,
+      "bus": false,
+      "conv-store": false,
+      "mart": false,
+      "hospital": false,
+      "pharmacy": false,
+      "park": false,
+      "public": false,
+      "culture": false,
+      "restaurant": false,
+      "cafe": false
+    },
+    {
+      "subway": false,
+      "bus": false,
+      "conv-store": false,
+      "mart": false,
+      "hospital": false,
+      "pharmacy": false,
+      "park": false,
+      "public": false,
+      "culture": false,
+      "restaurant": false,
+      "cafe": false
+    },
+    {
+      "subway": false,
+      "bus": false,
+      "conv-store": false,
+      "mart": false,
+      "hospital": false,
+      "pharmacy": false,
+      "park": false,
+      "public": false,
+      "culture": false,
+      "restaurant": false,
+      "cafe": false
+    },
+    {
+      "subway": false,
+      "bus": false,
+      "conv-store": false,
+      "mart": false,
+      "hospital": false,
+      "pharmacy": false,
+      "park": false,
+      "public": false,
+      "culture": false,
+      "restaurant": false,
+      "cafe": false
+    },
+    {
+      "subway": false,
+      "bus": false,
+      "conv-store": false,
+      "mart": false,
+      "hospital": false,
+      "pharmacy": false,
+      "park": false,
+      "public": false,
+      "culture": false,
+      "restaurant": false,
+      "cafe": false
+    },
+    {
+      "subway": false,
+      "bus": false,
+      "conv-store": false,
+      "mart": false,
+      "hospital": false,
+      "pharmacy": false,
+      "park": false,
+      "public": false,
+      "culture": false,
+      "restaurant": false,
+      "cafe": false
+    }
+  ];
+  List<Map<String, bool>> indoorFacilities = [
+    {
+      "air": true,
+      "refrigerator": true,
+      "stove": true,
+      "wifi": false,
+      "washer": true,
+      "dryer": false,
+      "desk": false,
+      "bed": true,
+      "closet": true
+    },
+    {
+      "air": true,
+      "refrigerator": true,
+      "stove": true,
+      "wifi": false,
+      "washer": true,
+      "dryer": false,
+      "desk": true,
+      "bed": true,
+      "closet": true
+    },
+    {
+      "air": true,
+      "refrigerator": true,
+      "stove": true,
+      "wifi": false,
+      "washer": true,
+      "dryer": false,
+      "desk": true,
+      "bed": true,
+      "closet": true
+    },
+    {
+      "air": true,
+      "refrigerator": true,
+      "stove": true,
+      "wifi": false,
+      "washer": true,
+      "dryer": false,
+      "desk": true,
+      "bed": true,
+      "closet": true
+    },
+    {
+      "air": true,
+      "refrigerator": true,
+      "stove": true,
+      "wifi": false,
+      "washer": true,
+      "dryer": false,
+      "desk": true,
+      "bed": true,
+      "closet": true
+    },
+    {
+      "air": true,
+      "refrigerator": true,
+      "stove": true,
+      "wifi": false,
+      "washer": true,
+      "dryer": false,
+      "desk": true,
+      "bed": true,
+      "closet": true
+    },
+    {
+      "air": true,
+      "refrigerator": true,
+      "stove": true,
+      "wifi": false,
+      "washer": true,
+      "dryer": false,
+      "desk": true,
+      "bed": true,
+      "closet": true
+    },
+    {
+      "air": true,
+      "refrigerator": true,
+      "stove": true,
+      "wifi": false,
+      "washer": true,
+      "dryer": false,
+      "desk": true,
+      "bed": true,
+      "closet": true
+    },
+    {
+      "air": true,
+      "refrigerator": true,
+      "stove": true,
+      "wifi": false,
+      "washer": true,
+      "dryer": false,
+      "desk": true,
+      "bed": true,
+      "closet": true
+    },
+    {
+      "air": true,
+      "refrigerator": true,
+      "stove": true,
+      "wifi": false,
+      "washer": true,
+      "dryer": false,
+      "desk": true,
+      "bed": true,
+      "closet": true
+    },
+  ];
 
   @override
   Widget build(BuildContext context) {
-    List<Map<String, String>> searchResults = [
-      {"name": "오피스텔 A", "point": "6.23점", "location": "주소1"},
-      {"name": "아파트 B", "point": "6.23점", "location": "주소2"},
-      {"name": "빌라 C", "point": "6.23점", "location": "경기도 수원시 영통구 하동"},
-      {"name": "원룸 D", "point": "6.23점", "location": "경기도 수원시 영통구 하동"},
-      {"name": "아파트 E", "point": "6.23점", "location": "경기도 수원시 영통구 하동"},
-      {"name": "원룸 D", "point": "6.23점", "location": "경기도 수원시 영통구 하동"},
-      {"name": "아파트 E", "point": "6.23점", "location": "경기도 수원시 영통구 하동"},
-      {"name": "원룸 D", "point": "6.23점", "location": "경기도 수원시 영통구 하동"},
-      {"name": "아파트 E", "point": "6.23점", "location": "경기도 수원시 영통구 하동"},
-    ];
-    Map<String, NLatLng> locations = {
-      "오피스텔 A": NLatLng(37.557160-0.00125, 127.045441-0.00125),
-      "오피스텔 A": NLatLng(37.557160+0.00125, 127.045441-0.00125),
-      "오피스텔 A": NLatLng(37.557160+0.00125, 127.045441+0.00125),
-    };
 
-    final searchResultsLength = searchResults.length;
+    final searchResultsLength = 10;
+    for(int i=1;i<=10;i++) {
+      searchResultImages.add(AssetImage('assets/p' + i.toString() + '-1.png'));
+    }
+    
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.blue,
@@ -191,11 +468,10 @@ class _Products extends State<Products> {
                   scrollDirection: Axis.vertical,
                   itemCount: searchResultsLength,
                   itemBuilder: (context, searchResultsIndex) {
-                    final searchResultsItem = searchResults[searchResultsIndex];
-                    final name = searchResultsItem['name'];
-                    final point = searchResultsItem['point'];
-                    final location = searchResultsItem['location'];
-
+                    final address = searchResultAddress[searchResultsIndex];
+                    final point = searchResultPoints[searchResultsIndex];
+                    final price = searchResultPrices[searchResultsIndex];
+                    final pic = searchResultImages[searchResultsIndex];
                     return Container(
                       height: 90,
                       decoration: BoxDecoration(
@@ -208,7 +484,21 @@ class _Products extends State<Products> {
                         highlightColor: Colors.transparent,
                         onTap: () async {
                           Navigator.pushNamed(
-                            ctx, "/d"
+                            ctx, "/d",
+                            arguments:{
+                              "locations": Locations(
+                                searchResultLocations[searchResultsIndex],
+                                searchResultAddress[searchResultsIndex],
+                                NLatLng(37.557160, 127.045441),
+                                "한양대학교",
+                                searchResultsIndex+1,
+                                searchResultImageCounts[searchResultsIndex],
+                                searchResultPrices[searchResultsIndex],
+                                searchResultPoints[searchResultsIndex],
+                                outdoorFacilities[searchResultsIndex],
+                                indoorFacilities[searchResultsIndex]
+                              )
+                            }
                           );
                         },
                         child: Card(
@@ -223,7 +513,7 @@ class _Products extends State<Products> {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Image(
-                                  image: AssetImage('assets/5.jpg'),
+                                  image: pic,
                                   width: 80,
                                   height: double.infinity,
                                   fit: BoxFit.cover,
@@ -236,7 +526,7 @@ class _Products extends State<Products> {
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          "$name",
+                                          "$address",
                                           style: TextStyle(
                                             fontSize: 16,
                                             letterSpacing: 0,
@@ -258,7 +548,7 @@ class _Products extends State<Products> {
                                           ),
                                         ),
                                         Text(
-                                          "$location",
+                                          "$price",
                                           style: TextStyle(
                                             fontSize: 14,
                                             letterSpacing: 0,

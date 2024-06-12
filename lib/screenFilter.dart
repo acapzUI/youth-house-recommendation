@@ -45,8 +45,7 @@ class _Checklists extends State<Checklists> {
   _Checklists(this.ctx);
 
   List<String> locations = [
-    "쿠팡",
-    "한양대학교"
+    "한양대학교",
   ];
   late String? locationValue = locations.first;
   double price = 5000;
@@ -449,7 +448,7 @@ class _Checklists extends State<Checklists> {
               );
             },
             child: Text("NEXT"),
-          ),
+          )
         ),
       ],
     );

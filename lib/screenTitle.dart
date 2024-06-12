@@ -24,7 +24,7 @@ class screenTitle extends StatelessWidget {
               children: [
                 Container(height: 180,),
                 Center(
-                    child: Image(width:300, image: AssetImage('assets/logo.png')),
+                    child: Image(width:300, image: AssetImage('assets/logo2.png')),
                 ),
                 Container(height: 20,),
                 Center(
