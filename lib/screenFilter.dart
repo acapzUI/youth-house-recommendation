@@ -18,7 +18,7 @@ class screenFilter extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.blue,
           title: Text(
-              '청년 보금자리',
+              '청년 보금자리 - 둥지',
             style: TextStyle(
               color: Colors.white,
             ),

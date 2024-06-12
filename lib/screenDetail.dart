@@ -29,7 +29,7 @@ class screenDetail extends StatelessWidget {
           appBar: AppBar(
               backgroundColor: Colors.blue,
               title: Text(
-                '청년 보금자리',
+                '청년 보금자리 - 둥지',
                 style: TextStyle(
                   color: Colors.white,
                 ),
@@ -133,6 +133,16 @@ class screenDetail extends StatelessWidget {
                       fontWeight: FontWeight.normal,
                     )
                 ),
+                Text(
+                    "가격: " + loc.price,
+                    style: TextStyle(
+                      fontSize: 20,
+                      letterSpacing: 0,
+                      fontWeight: FontWeight.normal,
+                    )
+                ),
+                Image.asset("assets/star5.png", width: 200,),
+                Image.asset("assets/time.png"),
                 Checklists_Detail(context, loc.outdoorFacility, loc.indoorFacility)
               ],
             ),

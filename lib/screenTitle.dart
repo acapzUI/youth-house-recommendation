@@ -13,31 +13,35 @@ class screenTitle extends StatelessWidget {
               backgroundColor: Colors.blue,
               shadowColor: Colors.black,
               title: Text(
-                '청년 보금자리',
+                '청년 보금자리 - 둥지',
                 style: TextStyle(
                   color: Colors.white,
                 ),
               )
           ),
-          body: Center(
+          body: Container(
+            color: Colors.blue,
             child: Column(
               children: [
                 Container(height: 180,),
                 Center(
-                    child: Image(width:300, image: AssetImage('assets/logo2.png')),
+                    child: Image(width:300, image: AssetImage('assets/logo3.png')),
                 ),
-                Container(height: 20,),
+                Container(height: 50,),
                 Center(
                   child: Container(
-                    width: 400,
+                    width: 300,
                     child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.white,
+                        ),
                         onPressed: () async {
                           Navigator.pushNamed(
                             context,
                             "/f",
                           );
                         },
-                        child: Text("시작하기")
+                        child: Text("시작하기", style: TextStyle(color: Colors.blue),)
                     ),
                   ),
                 )
