@@ -24,7 +24,9 @@ class screenFilter extends StatelessWidget {
             ),
           )
         ),
-        body: Checklists(context),
+        body: SingleChildScrollView(
+          child: Checklists(context),
+        )
       )
     );
   }
@@ -67,12 +69,15 @@ class _Checklists extends State<Checklists> {
     "air": false,
     "refrigerator": false,
     "stove": false,
-    "wifi": false,
+    "sink": false,
     "washer": false,
     "dryer": false,
     "desk": false,
     "bed": false,
-    "closet": false
+    "closet": false,
+    "shoes": false,
+    "induction": false,
+    "waves": false
   };
 
   @override
@@ -352,13 +357,13 @@ class _Checklists extends State<Checklists> {
           children: [
             Expanded(
               child: CheckboxListTile(
-                title: Text("WIFI"),
+                title: Text("싱크대"),
                 activeColor: Colors.deepOrangeAccent,
                 checkColor: Colors.black,
-                value: indoorFacility['wifi'],
+                value: indoorFacility['sink'],
                 onChanged: (bool? val) {
                   setState(() {
-                    indoorFacility['wifi'] = val ?? true;
+                    indoorFacility['sink'] = val ?? true;
                   });
                 },
               ),
@@ -434,11 +439,57 @@ class _Checklists extends State<Checklists> {
             )
           ],
         ),
+        Row(
+          children: [
+            Expanded(
+              child: CheckboxListTile(
+                title: Text("신발장"),
+                activeColor: Colors.deepOrangeAccent,
+                checkColor: Colors.black,
+                value: indoorFacility['shoes'],
+                onChanged: (bool? val) {
+                  setState(() {
+                    indoorFacility['shoes'] = val ?? true;
+                  });
+                },
+              ),
+            ),
+            Expanded(
+              child: CheckboxListTile(
+                title: Text("인덕션"),
+                activeColor: Colors.deepOrangeAccent,
+                checkColor: Colors.black,
+                value: indoorFacility['induction'],
+                onChanged: (bool? val) {
+                  setState(() {
+                    indoorFacility['induction'] = val ?? true;
+                  });
+                },
+              ),
+            ),
+            Expanded(
+              child: CheckboxListTile(
+                title: Text("전자레인지"),
+                activeColor: Colors.deepOrangeAccent,
+                checkColor: Colors.black,
+                value: indoorFacility['waves'],
+                onChanged: (bool? val) {
+                  setState(() {
+                    indoorFacility['waves'] = val ?? true;
+                  });
+                },
+              ),
+            )
+          ],
+        ),
         Container(height: 20,),
         Container(
           width: 400,
           height: 50,
           child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.blue,
+            ),
             onPressed: () async {
               Navigator.pushNamed(
                 ctx, '/m',
@@ -447,7 +498,7 @@ class _Checklists extends State<Checklists> {
                 }
               );
             },
-            child: Text("NEXT"),
+            child: Text("NEXT", style: TextStyle(color: Colors.white),),
           )
         ),
       ],

@@ -44,7 +44,7 @@ class screenTitle extends StatelessWidget {
                         child: Text("시작하기", style: TextStyle(color: Colors.blue),)
                     ),
                   ),
-                )
+                ),
               ],
             )
           )

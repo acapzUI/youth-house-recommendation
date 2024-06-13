@@ -169,7 +169,7 @@ class _Products extends State<Products> {
     7, 5, 3, 5, 6, 5, 4, 5, 5, 5
   ];
   List<double> searchResultPoints = [
-    15.6, 15.5, 15.2, 15.2, 15.2, 15.2, 15.2, 15.2, 15.2, 15.2
+    4.34, 4.91, 4.46, 4.81, 5.00, 4.81, 3.68, 3.46, 3.69, 4.92
   ];
   List<String> searchResultPrices = [
     "5000/45",
@@ -371,111 +371,141 @@ class _Products extends State<Products> {
       "air": true,
       "refrigerator": true,
       "stove": true,
-      "wifi": false,
+      "sink": true,
       "washer": true,
       "dryer": false,
       "desk": false,
       "bed": true,
-      "closet": true
+      "closet": true,
+      "shoes": true,
+      "induction": true,
+      "waves": true
     },
     {
       "air": true,
       "refrigerator": true,
       "stove": true,
-      "wifi": false,
+      "sink": false,
       "washer": true,
       "dryer": false,
       "desk": true,
       "bed": true,
-      "closet": true
+      "closet": true,
+      "shoes": true,
+      "induction": true,
+      "waves": true
     },
     {
       "air": true,
       "refrigerator": true,
       "stove": true,
-      "wifi": false,
+      "sink": false,
       "washer": true,
       "dryer": false,
       "desk": true,
       "bed": true,
-      "closet": true
+      "closet": true,
+      "shoes": false,
+      "induction": true,
+      "waves": true
     },
     {
       "air": true,
       "refrigerator": true,
       "stove": true,
-      "wifi": false,
+      "sink": false,
       "washer": true,
       "dryer": false,
       "desk": true,
       "bed": true,
-      "closet": true
+      "closet": true,
+      "shoes": true,
+      "induction": true,
+      "waves": true
     },
     {
       "air": true,
       "refrigerator": true,
       "stove": true,
-      "wifi": false,
+      "sink": false,
       "washer": true,
       "dryer": false,
       "desk": true,
       "bed": true,
-      "closet": true
+      "closet": true,
+      "shoes": true,
+      "induction": true,
+      "waves": true
     },
     {
       "air": true,
       "refrigerator": true,
       "stove": true,
-      "wifi": false,
+      "sink": false,
       "washer": true,
       "dryer": false,
       "desk": true,
       "bed": true,
-      "closet": true
+      "closet": true,
+      "shoes": true,
+      "induction": true,
+      "waves": true
     },
     {
       "air": true,
       "refrigerator": true,
       "stove": true,
-      "wifi": false,
+      "sink": false,
       "washer": true,
       "dryer": false,
       "desk": true,
       "bed": true,
-      "closet": true
+      "closet": true,
+      "shoes": true,
+      "induction": true,
+      "waves": false
     },
     {
       "air": true,
       "refrigerator": true,
       "stove": true,
-      "wifi": false,
+      "sink": false,
       "washer": true,
       "dryer": false,
       "desk": true,
       "bed": true,
-      "closet": true
+      "closet": true,
+      "shoes": true,
+      "induction": true,
+      "waves": true
     },
     {
       "air": true,
       "refrigerator": true,
       "stove": true,
-      "wifi": false,
+      "sink": false,
       "washer": true,
       "dryer": false,
       "desk": true,
       "bed": true,
-      "closet": true
+      "closet": true,
+      "shoes": true,
+      "induction": true,
+      "waves": true
     },
     {
       "air": true,
       "refrigerator": true,
       "stove": true,
-      "wifi": false,
+      "sink": false,
       "washer": true,
       "dryer": false,
       "desk": true,
       "bed": true,
-      "closet": true
+      "closet": true,
+      "shoes": true,
+      "induction": true,
+      "waves": true
     },
   ];
 
@@ -577,7 +607,7 @@ class _Products extends State<Products> {
                                           child: Padding(
                                             padding: EdgeInsetsDirectional.fromSTEB(0, 0, 6, 0),
                                             child: Text(
-                                              "$point",
+                                              "별 $point개",
                                               style: TextStyle(
                                                 fontSize: 14,
                                                 letterSpacing: 0,

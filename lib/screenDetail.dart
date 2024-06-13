@@ -11,6 +11,13 @@ class screenDetail extends StatelessWidget {
   screenDetail({Key? key}) : super(key: key);
 
   List<AssetImage> imgs = [];
+  List<AssetImage> starImgs = [
+    AssetImage("assets/star1.png"),
+    AssetImage("assets/star2.png"),
+    AssetImage("assets/star3.png"),
+    AssetImage("assets/star4.png"),
+    AssetImage("assets/star5.png"),
+  ];
 
 
   @override
@@ -141,9 +148,68 @@ class screenDetail extends StatelessWidget {
                       fontWeight: FontWeight.normal,
                     )
                 ),
-                Image.asset("assets/star5.png", width: 200,),
+                Image(image: starImgs[loc.point.floor()-1]),
+                Container(height: 10,),
+                Text(
+                    "점수: " + loc.point.toString(),
+                    style: TextStyle(
+                      fontSize: 20,
+                      letterSpacing: 0,
+                      fontWeight: FontWeight.normal,
+                    )
+                ),
                 Image.asset("assets/time.png"),
-                Checklists_Detail(context, loc.outdoorFacility, loc.indoorFacility)
+                Checklists_Detail(context, loc.outdoorFacility, loc.indoorFacility),
+                Container(height: 20,),
+                Center(
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          width: 300,
+                          child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.blue,
+                              ),
+                              onPressed: () async {
+                                showDialog(context: context, builder: (BuildContext ctx) {
+                                  return AlertDialog(
+                                    content: SingleChildScrollView(
+                                      child: Column(
+                                        children: [
+                                          Image.asset("assets/file"+ loc.picIndex.toString() + "-1" +".png"),
+                                          Image.asset("assets/file"+ loc.picIndex.toString() + "-2" +".png"),
+                                        ],
+                                      ),
+                                    ),
+                                    actions: [
+                                      ElevatedButton(
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor: Colors.white,
+                                          ),
+                                          onPressed: () async {
+                                            Navigator.of(context).pop();
+                                          },
+                                          child: Text("닫기", style: TextStyle(color: Colors.blue),)
+                                      ),
+                                    ],
+                                  );
+                                });
+                              },
+                              child: Text("건축물 정보 열람하기", style: TextStyle(color: Colors.white),)
+                          ),
+                        ),
+                        CircleAvatar(
+                          radius: 20,
+                          backgroundImage: AssetImage('assets/jikbang.png'),
+                        ),
+                        CircleAvatar(
+                          radius: 20,
+                          backgroundImage: AssetImage('assets/dabang.png'),
+                        ),
+                    ],
+                  ),
+                )
               ],
             ),
           ),
@@ -382,10 +448,10 @@ class _Checklists_Detail extends State<Checklists_Detail> {
             children: [
               Expanded(
                 child: CheckboxListTile(
-                  title: Text("WIFI"),
+                  title: Text("싱크대"),
                   activeColor: Colors.deepOrangeAccent,
                   checkColor: Colors.black,
-                  value: indoorFacility['wifi'],
+                  value: indoorFacility['sink'],
                   onChanged: (bool? val) {
                     setState(() {
                     });
@@ -455,7 +521,48 @@ class _Checklists_Detail extends State<Checklists_Detail> {
                     });
                   },
                 ),
-              )
+              ),
+
+            ],
+          ),
+          Row(
+            children: [
+              Expanded(
+                child: CheckboxListTile(
+                  title: Text("신발장"),
+                  activeColor: Colors.deepOrangeAccent,
+                  checkColor: Colors.black,
+                  value: indoorFacility['shoes'],
+                  onChanged: (bool? val) {
+                    setState(() {
+                    });
+                  },
+                ),
+              ),
+              Expanded(
+                child: CheckboxListTile(
+                  title: Text("인덕션"),
+                  activeColor: Colors.deepOrangeAccent,
+                  checkColor: Colors.black,
+                  value: indoorFacility['induction'],
+                  onChanged: (bool? val) {
+                    setState(() {
+                    });
+                  },
+                ),
+              ),
+              Expanded(
+                child: CheckboxListTile(
+                  title: Text("전자레인지"),
+                  activeColor: Colors.deepOrangeAccent,
+                  checkColor: Colors.black,
+                  value: indoorFacility['waves'],
+                  onChanged: (bool? val) {
+                    setState(() {
+                    });
+                  },
+                ),
+              ),
             ],
           ),
         ]
