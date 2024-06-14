@@ -11,16 +11,16 @@ class screenMap extends StatelessWidget {
   screenMap({Key? key}) : super(key: key);
 
   List<NLatLng> locations = [
-    NLatLng(37.5568961252672, 127.041607745077),
-    NLatLng(37.5567129920758 ,127.042508405187),
-    NLatLng(37.5565009541884, 127.041589643716),
     NLatLng(37.5566041846132, 127.041657379798),
-    NLatLng(37.5566041846132, 127.041657379798),
-    NLatLng(37.5564984012924, 127.041929506644),
-    NLatLng(37.5562860573636, 127.041869857816),
-    NLatLng(37.5564502427838, 127.041032455657),
-    NLatLng(37.5562459729189, 127.041586785817),
     NLatLng(37.5565375066403, 127.041155411556),
+    NLatLng(37.5567129920758, 127.042508405187),
+    NLatLng(37.5566041846132, 127.041657379798),
+    NLatLng(37.5566041846132, 127.041657379798),
+    NLatLng(37.5565009541884, 127.041589643716),
+    NLatLng(37.5568961252672, 127.041607745077),
+    NLatLng(37.5562459729189, 127.041586785817),
+    NLatLng(37.5562860573636, 127.041869857816),
+    NLatLng(37.5564502427838, 127.041032455657)
   ];
 
   List<NCircleOverlay> locationCircles = [];
@@ -152,361 +152,95 @@ class _Products extends State<Products> {
   final List<NLatLng> searchResultLocations;
   _Products(this.ctx, this.searchResultLocations);
 
+
+  List<AssetImage> searchResultImages = [];
   List<String> searchResultAddress = [
-    "서울시 성동구 행당동 37-34",
-    "서울시 성동구 행당동 32-31",
-    "서울시 성동구 행당동 37-92",
     "서울시 성동구 행당동 37-78",
+    "서울시 성동구 행당동 37-99",
+    "서울시 성동구 행당동 32-31",
     "서울시 성동구 행당동 37-78",
     "서울시 성동구 행당동 37-73",
-    "서울시 성동구 행당동 70-18",
-    "서울시 성동구 행당동 39-1",
+    "서울시 성동구 행당동 37-92",
+    "서울시 성동구 행당동 37-34",
     "서울시 성동구 행당동 70-23",
-    "서울시 성동구 행당동 37-99"
+    "서울시 성동구 행당동 70-18",
+    "서울시 성동구 행당동 39-1"
   ];
-  List<AssetImage> searchResultImages = [];
   List<int> searchResultImageCounts = [
-    7, 5, 3, 5, 6, 5, 4, 5, 5, 5
+    6, 5, 5, 5, 5, 3, 7, 5, 4, 5
   ];
   List<double> searchResultPoints = [
-    4.34, 4.91, 4.46, 4.81, 5.00, 4.81, 3.68, 3.46, 3.69, 4.92
+    5.00, 4.92, 4.91, 4.81, 4.81, 4.46, 4.34, 3.69, 3.68, 3.46
   ];
   List<String> searchResultPrices = [
-    "5000/45",
-    "4000/40",
-    "2000/50",
-    "1000/55",
-    "500/55",
-    "1000/55",
-    "5000/55",
-    "5000/60",
-    "6000/50",
-    "500/56"
+    "500/55", "500/56", "4000/40", "1000/55", "1000/55", "2000/50", "5000/45", "6000/50", "5000/55", "5000/60"
   ];
   List<double> searchResultcPrices = [
-    14381.818,
-    12727.273,
-    14000,
-    13000,
-    12500,
-    13000,
-    17000,
-    18090.909,
-    16909.091,
-    12718.182,
+    12500.0, 12718.182, 12727.273, 13000.0, 13000.0, 14000.0, 14381.818, 16909.091, 17000.0, 18090.909
   ];
   List<Map<String, bool>> outdoorFacilities = [
     {
-      "subway": true,
-      "bus": true,
-      "conv-store": true,
-      "mart": true,
-      "hospital": true,
-      "pharmacy": true,
-      "park": true,
-      "public": true,
-      "culture": true,
-      "restaurant": true,
-      "cafe": true
+      "subway": true, "bus": true, "conv-store": true, "mart": true, "hospital": true, "pharmacy": true, "park": true, "public": true, "culture": true, "restaurant": true, "cafe": true
     },
     {
-      "subway": true,
-      "bus": true,
-      "conv-store": true,
-      "mart": true,
-      "hospital": true,
-      "pharmacy": true,
-      "park": true,
-      "public": true,
-      "culture": true,
-      "restaurant": true,
-      "cafe": true
+      "subway": true, "bus": true, "conv-store": true, "mart": true, "hospital": true, "pharmacy": true, "park": true, "public": true, "culture": true, "restaurant": true, "cafe": true
     },
     {
-      "subway": true,
-      "bus": true,
-      "conv-store": true,
-      "mart": true,
-      "hospital": true,
-      "pharmacy": true,
-      "park": true,
-      "public": true,
-      "culture": true,
-      "restaurant": true,
-      "cafe": true
+      "subway": true, "bus": true, "conv-store": true, "mart": true, "hospital": true, "pharmacy": true, "park": true, "public": true, "culture": true, "restaurant": true, "cafe": true
     },
     {
-      "subway": true,
-      "bus": true,
-      "conv-store": true,
-      "mart": true,
-      "hospital": true,
-      "pharmacy": true,
-      "park": true,
-      "public": true,
-      "culture": true,
-      "restaurant": true,
-      "cafe": true
+      "subway": true, "bus": true, "conv-store": true, "mart": true, "hospital": true, "pharmacy": true, "park": true, "public": true, "culture": true, "restaurant": true, "cafe": true
     },
     {
-      "subway": true,
-      "bus": true,
-      "conv-store": true,
-      "mart": true,
-      "hospital": true,
-      "pharmacy": true,
-      "park": true,
-      "public": true,
-      "culture": true,
-      "restaurant": true,
-      "cafe": true
+      "subway": true, "bus": true, "conv-store": true, "mart": true, "hospital": true, "pharmacy": true, "park": true, "public": true, "culture": true, "restaurant": true, "cafe": true
     },
     {
-      "subway": true,
-      "bus": true,
-      "conv-store": true,
-      "mart": true,
-      "hospital": true,
-      "pharmacy": true,
-      "park": true,
-      "public": true,
-      "culture": true,
-      "restaurant": true,
-      "cafe": true
+      "subway": true, "bus": true, "conv-store": true, "mart": true, "hospital": true, "pharmacy": true, "park": true, "public": true, "culture": true, "restaurant": true, "cafe": true
     },
     {
-      "subway": true,
-      "bus": true,
-      "conv-store": true,
-      "mart": true,
-      "hospital": true,
-      "pharmacy": true,
-      "park": true,
-      "public": true,
-      "culture": true,
-      "restaurant": true,
-      "cafe": true
+      "subway": true, "bus": true, "conv-store": true, "mart": true, "hospital": true, "pharmacy": true, "park": true, "public": true, "culture": true, "restaurant": true, "cafe": true
     },
     {
-      "subway": true,
-      "bus": true,
-      "conv-store": true,
-      "mart": true,
-      "hospital": true,
-      "pharmacy": true,
-      "park": true,
-      "public": true,
-      "culture": true,
-      "restaurant": true,
-      "cafe": true
+      "subway": true, "bus": true, "conv-store": true, "mart": true, "hospital": true, "pharmacy": true, "park": true, "public": true, "culture": true, "restaurant": true, "cafe": true
     },
     {
-      "subway": true,
-      "bus": true,
-      "conv-store": true,
-      "mart": true,
-      "hospital": true,
-      "pharmacy": true,
-      "park": true,
-      "public": true,
-      "culture": true,
-      "restaurant": true,
-      "cafe": true
+      "subway": true, "bus": true, "conv-store": true, "mart": true, "hospital": true, "pharmacy": true, "park": true, "public": true, "culture": true, "restaurant": true, "cafe": true
     },
     {
-      "subway": true,
-      "bus": true,
-      "conv-store": true,
-      "mart": true,
-      "hospital": true,
-      "pharmacy": true,
-      "park": true,
-      "public": true,
-      "culture": true,
-      "restaurant": true,
-      "cafe": true
-    },
-    {
-      "subway": true,
-      "bus": true,
-      "conv-store": true,
-      "mart": true,
-      "hospital": true,
-      "pharmacy": true,
-      "park": true,
-      "public": true,
-      "culture": true,
-      "restaurant": true,
-      "cafe": true
-    },
-    {
-      "subway": true,
-      "bus": true,
-      "conv-store": true,
-      "mart": true,
-      "hospital": true,
-      "pharmacy": true,
-      "park": true,
-      "public": true,
-      "culture": true,
-      "restaurant": true,
-      "cafe": true
-    },
-    {
-      "subway": true,
-      "bus": true,
-      "conv-store": true,
-      "mart": true,
-      "hospital": true,
-      "pharmacy": true,
-      "park": true,
-      "public": true,
-      "culture": true,
-      "restaurant": true,
-      "cafe": true
-    },
+      "subway": true, "bus": true, "conv-store": true, "mart": true, "hospital": true, "pharmacy": true, "park": true, "public": true, "culture": true, "restaurant": true, "cafe": true
+    }
   ];
   List<Map<String, bool>> indoorFacilities = [
     {
-      "air": true,
-      "refrigerator": true,
-      "stove": true,
-      "sink": true,
-      "washer": true,
-      "dryer": false,
-      "desk": false,
-      "bed": true,
-      "closet": true,
-      "shoes": true,
-      "induction": true,
-      "waves": true
+      "air": true, "refrigerator": true, "stove": true, "sink": true, "washer": true, "dryer": false, "desk": false, "bed": true, "closet": true, "shoes": true, "induction": true, "waves": true
     },
     {
-      "air": true,
-      "refrigerator": true,
-      "stove": true,
-      "sink": false,
-      "washer": true,
-      "dryer": false,
-      "desk": true,
-      "bed": true,
-      "closet": true,
-      "shoes": true,
-      "induction": true,
-      "waves": true
+      "air": true, "refrigerator": true, "stove": true, "sink": false, "washer": true, "dryer": false, "desk": true, "bed": true, "closet": true, "shoes": true, "induction": true, "waves": true
     },
     {
-      "air": true,
-      "refrigerator": true,
-      "stove": true,
-      "sink": false,
-      "washer": true,
-      "dryer": false,
-      "desk": true,
-      "bed": true,
-      "closet": true,
-      "shoes": false,
-      "induction": true,
-      "waves": true
+      "air": true, "refrigerator": true, "stove": true, "sink": false, "washer": true, "dryer": false, "desk": true, "bed": true, "closet": true, "shoes": false, "induction": true, "waves": true
     },
     {
-      "air": true,
-      "refrigerator": true,
-      "stove": true,
-      "sink": false,
-      "washer": true,
-      "dryer": false,
-      "desk": true,
-      "bed": true,
-      "closet": true,
-      "shoes": true,
-      "induction": true,
-      "waves": true
+      "air": true, "refrigerator": true, "stove": true, "sink": false, "washer": true, "dryer": false, "desk": true, "bed": true, "closet": true, "shoes": true, "induction": true, "waves": true
     },
     {
-      "air": true,
-      "refrigerator": true,
-      "stove": true,
-      "sink": false,
-      "washer": true,
-      "dryer": false,
-      "desk": true,
-      "bed": true,
-      "closet": true,
-      "shoes": true,
-      "induction": true,
-      "waves": true
+      "air": true, "refrigerator": true, "stove": true, "sink": false, "washer": true, "dryer": false, "desk": true, "bed": true, "closet": true, "shoes": true, "induction": true, "waves": true
     },
     {
-      "air": true,
-      "refrigerator": true,
-      "stove": true,
-      "sink": false,
-      "washer": true,
-      "dryer": false,
-      "desk": true,
-      "bed": true,
-      "closet": true,
-      "shoes": true,
-      "induction": true,
-      "waves": true
+      "air": true, "refrigerator": true, "stove": true, "sink": false, "washer": true, "dryer": false, "desk": true, "bed": true, "closet": true, "shoes": true, "induction": true, "waves": true
     },
     {
-      "air": true,
-      "refrigerator": true,
-      "stove": true,
-      "sink": false,
-      "washer": true,
-      "dryer": false,
-      "desk": true,
-      "bed": true,
-      "closet": true,
-      "shoes": true,
-      "induction": true,
-      "waves": false
+      "air": true, "refrigerator": true, "stove": true, "sink": false, "washer": true, "dryer": false, "desk": true, "bed": true, "closet": true, "shoes": true, "induction": true, "waves": false
     },
     {
-      "air": true,
-      "refrigerator": true,
-      "stove": true,
-      "sink": false,
-      "washer": true,
-      "dryer": false,
-      "desk": true,
-      "bed": true,
-      "closet": true,
-      "shoes": true,
-      "induction": true,
-      "waves": true
+      "air": true, "refrigerator": true, "stove": true, "sink": false, "washer": true, "dryer": false, "desk": true, "bed": true, "closet": true, "shoes": true, "induction": true, "waves": true
     },
     {
-      "air": true,
-      "refrigerator": true,
-      "stove": true,
-      "sink": false,
-      "washer": true,
-      "dryer": false,
-      "desk": true,
-      "bed": true,
-      "closet": true,
-      "shoes": true,
-      "induction": true,
-      "waves": true
+      "air": true, "refrigerator": true, "stove": true, "sink": false, "washer": true, "dryer": false, "desk": true, "bed": true, "closet": true, "shoes": true, "induction": true, "waves": true
     },
     {
-      "air": true,
-      "refrigerator": true,
-      "stove": true,
-      "sink": false,
-      "washer": true,
-      "dryer": false,
-      "desk": true,
-      "bed": true,
-      "closet": true,
-      "shoes": true,
-      "induction": true,
-      "waves": true
-    },
+      "air": true, "refrigerator": true, "stove": true, "sink": false, "washer": true, "dryer": false, "desk": true, "bed": true, "closet": true, "shoes": true, "induction": true, "waves": true
+    }
   ];
 
   @override
@@ -607,7 +341,7 @@ class _Products extends State<Products> {
                                           child: Padding(
                                             padding: EdgeInsetsDirectional.fromSTEB(0, 0, 6, 0),
                                             child: Text(
-                                              "별 $point개",
+                                              "$point / 5",
                                               style: TextStyle(
                                                 fontSize: 14,
                                                 letterSpacing: 0,

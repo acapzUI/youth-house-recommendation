@@ -116,8 +116,8 @@ class _Checklists extends State<Checklists> {
         Slider(
           value: price,
           min: 5000,
-          max: 50000,
-          divisions: 45,
+          max: 20000,
+          divisions: 15,
           label: "${price~/10000}억 ${((price%10000).toInt())~/1000}천만원",
           onChanged: (double value) => setState(() { price=value; }),
         ),
